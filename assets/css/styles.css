@@ -189,6 +189,31 @@ a {
   border-bottom: 2px solid var(--primary);
 }
 
+.list-panel {
+  display: none;
+}
+
+.list-panel.active {
+  display: block;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.pill {
+  padding: 6px 14px;
+  border-radius: 18px;
+  border: 1px solid #cdd3df;
+  background: #f7f8fb;
+  font-size: 12px;
+  color: #485064;
+}
+
 .btn-primary {
   background: var(--primary);
   border: none;
@@ -234,6 +259,25 @@ a {
   vertical-align: middle;
 }
 
+.table tbody tr:hover {
+  background: #f7f9fc;
+}
+
+.table .row-toggle {
+  width: 26px;
+  text-align: center;
+  color: #4b5e88;
+}
+
+.table .row-toggle button {
+  border: none;
+  background: #eef1f7;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .status {
   display: inline-flex;
   align-items: center;
@@ -261,6 +305,11 @@ a {
 
 .status.pending {
   background: #eaf0ff;
+  color: #2b64c0;
+}
+
+.status.waiting {
+  background: #e7efff;
   color: #2b64c0;
 }
 
@@ -302,6 +351,10 @@ a {
   padding: 24px 28px;
   box-shadow: var(--shadow);
   position: relative;
+}
+
+.modal.large {
+  width: min(900px, 96vw);
 }
 
 .modal.small {
@@ -458,6 +511,164 @@ a {
   color: var(--muted);
 }
 
+.details-card {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 20px;
+  font-size: 13px;
+}
+
+.details-grid div span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.audit-table td,
+.audit-table th {
+  padding: 12px 12px;
+}
+
+.audit-table .badge {
+  font-weight: 600;
+}
+
+.pill-tabs {
+  display: inline-flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.pill-tabs button {
+  border: none;
+  background: #eef1f7;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pill-tabs button.active {
+  background: #11141b;
+  color: white;
+}
+
+.expanded-panel {
+  background: #f7f9fc;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 12px 0;
+  display: none;
+}
+
+.expanded-panel.active {
+  display: block;
+}
+
+.expanded-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.expanded-meta span {
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.expand-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-success {
+  background: #2e7d4c;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-danger {
+  background: #c64848;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 18px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.status-popover {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  width: 180px;
+  font-size: 12px;
+  color: #394150;
+  display: none;
+  right: 0;
+  top: 38px;
+  z-index: 40;
+}
+
+.status-popover strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.status-popover.active {
+  display: block;
+}
+
+.status-cell {
+  position: relative;
+}
+
+.list-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.list-actions button {
+  border: none;
+  background: #eef1f7;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.table-compact th,
+.table-compact td {
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+.table-scroll {
+  max-height: 420px;
+  overflow: auto;
+}
+
 .modal-success {
   display: flex;
   gap: 10px;
@@ -475,6 +686,11 @@ a {
   .form-grid {
     grid-template-columns: 1fr;
   }
+
+  .details-grid,
+  .expanded-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
@@ -491,5 +707,10 @@ a {
   .table th,
   .table td {
     font-size: 12px;
+  }
+
+  .details-grid,
+  .expanded-meta {
+    grid-template-columns: 1fr;
   }
 }

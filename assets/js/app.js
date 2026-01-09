@@ -1,16 +1,31 @@
 const modalTriggers = document.querySelectorAll("[data-modal-target]");
+const editTriggers = document.querySelectorAll("[data-edit-target]");
+const deleteTriggers = document.querySelectorAll("[data-delete-target]");
+const previewTriggers = document.querySelectorAll("[data-preview-target]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
 const overlay = document.querySelector(".modal-overlay");
 const modal = document.querySelector(".modal");
+const editOverlay = document.querySelector(".edit-overlay");
+const deleteOverlay = document.querySelector(".delete-overlay");
+const rejectOverlay = document.querySelector(".reject-overlay");
 const confirmOverlay = document.querySelector(".confirm-overlay");
 const successOverlay = document.querySelector(".success-overlay");
+const statusPopovers = document.querySelectorAll("[data-status-popover]");
+const statusButtons = document.querySelectorAll("[data-status-button]");
+const auditTabs = document.querySelectorAll("[data-tab-target]");
+const auditPanels = document.querySelectorAll("[data-tab-panel]");
+const listTabs = document.querySelectorAll("[data-list-tab]");
+const listPanels = document.querySelectorAll("[data-list-panel]");
+const rowToggles = document.querySelectorAll("[data-row-toggle]");
+const approveButtons = document.querySelectorAll("[data-approve]");
+const rejectButtons = document.querySelectorAll("[data-reject]");
 
 const stepButtons = document.querySelectorAll("[data-step]");
 const stepPanels = document.querySelectorAll(".step-panel");
 const stepIndicators = document.querySelectorAll(".step");
-const previousButton = document.querySelector("[data-role=\"prev\"]");
-const nextButton = document.querySelector("[data-role=\"next\"]");
-const submitButton = document.querySelector("[data-role=\"submit\"]");
+const previousButtons = document.querySelectorAll("[data-role=\"prev\"]");
+const nextButtons = document.querySelectorAll("[data-role=\"next\"]");
+const submitButtons = document.querySelectorAll("[data-role=\"submit\"]");
 
 const addRowButton = document.querySelector("[data-add-row]");
 const configTableBody = document.querySelector("[data-config-body]");
@@ -31,6 +46,31 @@ function closeModal() {
   overlay?.classList.remove("active");
 }
 
+function openEditModal() {
+  editOverlay?.classList.add("active");
+  showStep("1");
+}
+
+function closeEditModal() {
+  editOverlay?.classList.remove("active");
+}
+
+function openDeleteModal() {
+  deleteOverlay?.classList.add("active");
+}
+
+function closeDeleteModal() {
+  deleteOverlay?.classList.remove("active");
+}
+
+function openRejectModal() {
+  rejectOverlay?.classList.add("active");
+}
+
+function closeRejectModal() {
+  rejectOverlay?.classList.remove("active");
+}
+
 function showStep(step) {
   stepPanels.forEach((panel) => {
     panel.classList.toggle("active", panel.dataset.step === step);
@@ -40,12 +80,16 @@ function showStep(step) {
     indicator.classList.toggle("active", indicator.dataset.step === step);
   });
 
-  if (previousButton && nextButton && submitButton) {
-    const isFirst = step === "1";
-    previousButton.style.display = isFirst ? "none" : "inline-flex";
-    nextButton.style.display = isFirst ? "inline-flex" : "none";
-    submitButton.style.display = isFirst ? "none" : "inline-flex";
-  }
+  const isFirst = step === "1";
+  previousButtons.forEach((button) => {
+    button.style.display = isFirst ? "none" : "inline-flex";
+  });
+  nextButtons.forEach((button) => {
+    button.style.display = isFirst ? "inline-flex" : "none";
+  });
+  submitButtons.forEach((button) => {
+    button.style.display = isFirst ? "none" : "inline-flex";
+  });
 }
 
 function openConfirm() {
@@ -68,11 +112,28 @@ modalTriggers.forEach((trigger) => {
   trigger.addEventListener("click", openModal);
 });
 
+editTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", openEditModal);
+});
+
+deleteTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", openDeleteModal);
+});
+
+previewTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    window.location.href = "preview-request.html";
+  });
+});
+
 modalCloseButtons.forEach((button) => {
   button.addEventListener("click", () => {
     closeModal();
+    closeEditModal();
+    closeDeleteModal();
     closeConfirm();
     closeSuccess();
+    closeRejectModal();
   });
 });
 
@@ -122,6 +183,61 @@ confirmProceed?.addEventListener("click", () => {
   openSuccess();
 });
 
+statusButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const targetId = button.dataset.statusButton;
+    statusPopovers.forEach((popover) => {
+      popover.classList.toggle("active", popover.dataset.statusPopover === targetId);
+    });
+  });
+});
+
+document.addEventListener("click", (event) => {
+  const isStatusButton = event.target.closest("[data-status-button]");
+  const isPopover = event.target.closest("[data-status-popover]");
+  if (!isStatusButton && !isPopover) {
+    statusPopovers.forEach((popover) => popover.classList.remove("active"));
+  }
+});
+
+auditTabs.forEach((button) => {
+  button.addEventListener("click", () => {
+    auditTabs.forEach((tab) => tab.classList.remove("active"));
+    button.classList.add("active");
+    auditPanels.forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.tabPanel === button.dataset.tabTarget);
+    });
+  });
+});
+
+listTabs.forEach((button) => {
+  button.addEventListener("click", () => {
+    listTabs.forEach((tab) => tab.classList.remove("active"));
+    button.classList.add("active");
+    listPanels.forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.listPanel === button.dataset.listTab);
+    });
+  });
+});
+
+rowToggles.forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = document.querySelector(`[data-row-panel=\"${button.dataset.rowToggle}\"]`);
+    if (!target) return;
+    target.classList.toggle("active");
+  });
+});
+
+approveButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.textContent = "Approved";
+  });
+});
+
+rejectButtons.forEach((button) => {
+  button.addEventListener("click", openRejectModal);
+});
+
 toggleButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const group = button.closest("[data-toggle-group]");
@@ -134,7 +250,10 @@ toggleButtons.forEach((button) => {
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeModal();
+    closeEditModal();
+    closeDeleteModal();
     closeConfirm();
     closeSuccess();
+    closeRejectModal();
   }
 });
