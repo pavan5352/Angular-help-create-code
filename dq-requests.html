@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DQ Requests</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="brand">
+      <div class="brand-logo">citi</div>
+      <div class="brand-subtitle">Data Quality Monitoring &amp; Reconciliation</div>
+    </div>
+    <div class="top-actions">
+      <label class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="#6b6f7a" stroke-width="2"></circle>
+          <path d="M20 20L17 17" stroke="#6b6f7a" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <input type="text" placeholder="Search" />
+      </label>
+      <button class="icon-btn" aria-label="Notifications">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3C9 3 7 5.5 7 8.5V11.5C7 12.9 6.5 14.2 5.5 15.2L4.5 16.2H19.5L18.5 15.2C17.5 14.2 17 12.9 17 11.5V8.5C17 5.5 15 3 12 3Z" stroke="#394150" stroke-width="1.5" stroke-linejoin="round"></path>
+          <path d="M9.5 18C10 19.5 11 21 12.5 21C14 21 15 19.5 15.5 18" stroke="#394150" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      <button class="icon-btn" aria-label="User">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" stroke="#394150" stroke-width="1.5"></circle>
+          <path d="M5 20C6.5 17 9 15.5 12 15.5C15 15.5 17.5 17 19 20" stroke="#394150" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a class="active" href="dq-requests.html">DQ Requests</a>
+  </nav>
+
+  <main class="container">
+    <div class="section-header">
+      <div class="secondary-tabs">
+        <button class="active" data-list-tab="my">My Requests (6)</button>
+        <button data-list-tab="all">All Requests (15)</button>
+      </div>
+      <button class="btn-primary" data-modal-target>+ Create New DQ Request</button>
+    </div>
+
+    <section class="list-panel active" data-list-panel="my">
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>CSI ID</th>
+              <th>Project Name</th>
+              <th>Table Name</th>
+              <th>DQ Mode</th>
+              <th>Type of Tables</th>
+              <th>Maker</th>
+              <th>Trigger Frequency</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CSI14122</td>
+              <td>Data Lake</td>
+              <td>SALES_DATA_RELEASE</td>
+              <td>Query Space</td>
+              <td>Single Table</td>
+              <td>MR54924</td>
+              <td>Weekly</td>
+              <td>01/06/26</td>
+              <td><span class="status pending">Send for Approval</span></td>
+              <td>
+                <div class="action-icons">
+                  <button aria-label="View" data-preview-target><span>👁️</span></button>
+                  <button aria-label="Edit" data-edit-target><span>✏️</span></button>
+                  <button aria-label="Delete" data-delete-target><span>🗑️</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>CSI14127</td>
+              <td>Migration</td>
+              <td>SALES_DATA_RELEASE</td>
+              <td>Query Space</td>
+              <td>Single Table</td>
+              <td>PP48684</td>
+              <td>Quarterly</td>
+              <td>01/05/26</td>
+              <td><span class="status draft">Draft</span></td>
+              <td>
+                <div class="action-icons">
+                  <button aria-label="View" data-preview-target><span>👁️</span></button>
+                  <button aria-label="Edit" data-edit-target><span>✏️</span></button>
+                  <button aria-label="Delete" data-delete-target><span>🗑️</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>CSI14325</td>
+              <td>Enterprise Data Lake Migration</td>
+              <td>DQ_PRODUCT_MASTER</td>
+              <td>Query Space</td>
+              <td>Multiple Table</td>
+              <td>MR54924</td>
+              <td>Weekly</td>
+              <td>01/05/26</td>
+              <td><span class="status approved">Approved</span></td>
+              <td>
+                <div class="action-icons">
+                  <button aria-label="View" data-preview-target><span>👁️</span></button>
+                  <button aria-label="Edit" data-edit-target><span>✏️</span></button>
+                  <button aria-label="Delete" data-delete-target><span>🗑️</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>CSI14523</td>
+              <td>Data Lake</td>
+              <td>DQ_PRODUCT</td>
+              <td>Query Space</td>
+              <td>Multiple Table</td>
+              <td>DT45832</td>
+              <td>Weekly</td>
+              <td>12/05/25</td>
+              <td><span class="status approved">Approved</span></td>
+              <td>
+                <div class="action-icons">
+                  <button aria-label="View" data-preview-target><span>👁️</span></button>
+                  <button aria-label="Edit" data-edit-target><span>✏️</span></button>
+                  <button aria-label="Delete" data-delete-target><span>🗑️</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>CSI14721</td>
+              <td>Enterprise Data</td>
+              <td>DQ_CUSTOMER_VALIDATION</td>
+              <td>Table Configuration</td>
+              <td>Multiple Table</td>
+              <td>EW34857</td>
+              <td>Weekly</td>
+              <td>11/23/25</td>
+              <td><span class="status approved">Approved</span></td>
+              <td>
+                <div class="action-icons">
+                  <button aria-label="View" data-preview-target><span>👁️</span></button>
+                  <button aria-label="Edit" data-edit-target><span>✏️</span></button>
+                  <button aria-label="Delete" data-delete-target><span>🗑️</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>CSI14919</td>
+              <td>Lake Migration</td>
+              <td>DQ_SALES_AUDIT_LOG</td>
+              <td>Table Configuration</td>
+              <td>Single Table</td>
+              <td>ZR48573</td>
+              <td>Monthly</td>
+              <td>12/01/25</td>
+              <td class="status-cell">
+                <button class="status rejected" data-status-button="reject-1">Rejected</button>
+                <div class="status-popover" data-status-popover="reject-1">
+                  <strong>Rejected</strong>
+                  Reason: Lorem ipsum dolor sit amet, consectetur elit.
+                </div>
+              </td>
+              <td>
+                <div class="action-icons">
+                  <button aria-label="View" data-preview-target><span>👁️</span></button>
+                  <button aria-label="Edit" data-edit-target><span>✏️</span></button>
+                  <button aria-label="Delete" data-delete-target><span>🗑️</span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="list-panel" data-list-panel="all">
+      <div class="table-wrap table-scroll">
+        <table class="table table-compact">
+          <thead>
+            <tr>
+              <th></th>
+              <th>CSI ID</th>
+              <th>Project Name</th>
+              <th>Table Name</th>
+              <th>DQ Mode</th>
+              <th>Type of Tables</th>
+              <th>Request Created by</th>
+              <th>Trigger Frequency</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="row-toggle"><button data-row-toggle="row-1">▸</button></td>
+              <td>CSI12345</td>
+              <td>Enterprise Data Lake Migration</td>
+              <td>DQ_PRODUCT_MASTER</td>
+              <td>Table Configuration</td>
+              <td>Single Table</td>
+              <td>JD12321</td>
+              <td>Weekly</td>
+              <td>11/23/25</td>
+              <td><span class="status waiting">Waiting for approval</span></td>
+            </tr>
+            <tr>
+              <td colspan="10">
+                <div class="expanded-panel" data-row-panel="row-1">
+                  <div class="expanded-meta">
+                    <div><span>Checker</span>AB21232</div>
+                    <div><span>Mail Trigger to</span>ER83922</div>
+                    <div><span>DQ Mode</span>Table Configuration</div>
+                    <div><span>Type of Tables</span>Single</div>
+                  </div>
+                  <table class="inline-table">
+                    <thead>
+                      <tr>
+                        <th>Table Name</th>
+                        <th>AttributeName</th>
+                        <th>Data Type</th>
+                        <th>Aggregate Condition</th>
+                        <th>DQ Condition</th>
+                        <th>DQ Check Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DQ_PRODUCT_MASTER</td>
+                        <td>GFCID</td>
+                        <td>String</td>
+                        <td>Count</td>
+                        <td>Select Conditions</td>
+                        <td>0</td>
+                      </tr>
+                      <tr>
+                        <td>DQ_CUSTOMER_VALIDATION</td>
+                        <td>CVYTD Call</td>
+                        <td>String</td>
+                        <td>Select Conditions</td>
+                        <td>Select Conditions</td>
+                        <td>Enter DQ Value</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="expand-actions">
+                    <button class="btn-success" data-approve>Approve</button>
+                    <button class="btn-danger" data-reject>Reject</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-toggle"><button data-row-toggle="row-2">▸</button></td>
+              <td>CSI12543</td>
+              <td>Data Lake</td>
+              <td>DQ_PRODUCT</td>
+              <td>Query Space</td>
+              <td>Multiple Table</td>
+              <td>AE34342</td>
+              <td>Monthly</td>
+              <td>12/01/25</td>
+              <td><span class="status waiting">Waiting for approval</span></td>
+            </tr>
+            <tr>
+              <td colspan="10">
+                <div class="expanded-panel" data-row-panel="row-2">
+                  <div class="expanded-meta">
+                    <div><span>Checker</span>AB21232</div>
+                    <div><span>Mail Trigger to</span>ER83922</div>
+                    <div><span>DQ Mode</span>Query Space</div>
+                    <div><span>Type of Tables</span>Multiple</div>
+                  </div>
+                  <table class="inline-table">
+                    <thead>
+                      <tr>
+                        <th>Table Name</th>
+                        <th>AttributeName</th>
+                        <th>Data Type</th>
+                        <th>Aggregate Condition</th>
+                        <th>DQ Condition</th>
+                        <th>DQ Check Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DQ_PRODUCT</td>
+                        <td>DTBR</td>
+                        <td>String</td>
+                        <td>Max</td>
+                        <td>Select Conditions</td>
+                        <td>T-1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="expand-actions">
+                    <button class="btn-success" data-approve>Approve</button>
+                    <button class="btn-danger" data-reject>Reject</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="row-toggle"><button data-row-toggle="row-3">▸</button></td>
+              <td>CSI2741</td>
+              <td>Enterprise Data</td>
+              <td>DQ_CUSTOMER_VALIDATION</td>
+              <td>Table Configuration</td>
+              <td>Multiple Table</td>
+              <td>TR42342</td>
+              <td>Daily</td>
+              <td>11/23/25</td>
+              <td><span class="status waiting">Waiting for approval</span></td>
+            </tr>
+            <tr>
+              <td colspan="10">
+                <div class="expanded-panel" data-row-panel="row-3">
+                  <div class="expanded-meta">
+                    <div><span>Checker</span>AB21232</div>
+                    <div><span>Mail Trigger to</span>ER83922</div>
+                    <div><span>DQ Mode</span>Table Configuration</div>
+                    <div><span>Type of Tables</span>Multiple</div>
+                  </div>
+                  <table class="inline-table">
+                    <thead>
+                      <tr>
+                        <th>Table Name</th>
+                        <th>AttributeName</th>
+                        <th>Data Type</th>
+                        <th>Aggregate Condition</th>
+                        <th>DQ Condition</th>
+                        <th>DQ Check Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DQ_CUSTOMER_VALIDATION</td>
+                        <td>GFCID</td>
+                        <td>String</td>
+                        <td>Count</td>
+                        <td>Select Conditions</td>
+                        <td>0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="expand-actions">
+                    <button class="btn-success" data-approve>Approve</button>
+                    <button class="btn-danger" data-reject>Reject</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" data-modal-close aria-label="Close">×</button>
+      <h2>Create New DQ Request</h2>
+      <div class="stepper">
+        <div class="step active" data-step="1">
+          <span class="circle">1</span>
+          <span>Create Request</span>
+        </div>
+        <div class="step" data-step="2">
+          <span class="circle">2</span>
+          <span>Configuration Setup</span>
+        </div>
+      </div>
+
+      <div class="step-panel active" data-step="1">
+        <div class="form-grid">
+          <div class="form-field">
+            <label>CSI ID</label>
+            <input type="text" placeholder="Select CSID" />
+          </div>
+          <div class="form-field">
+            <label>Project Name</label>
+            <input type="text" placeholder="Select or enter the Project Name" />
+          </div>
+          <div class="form-field">
+            <label>Checker</label>
+            <input type="text" placeholder="Select the Supervisor" />
+          </div>
+          <div class="form-field">
+            <label>SOEID for Mail Trigger</label>
+            <input type="text" placeholder="Select the User(s)" />
+          </div>
+          <div class="form-field">
+            <label>Trigger Frequency</label>
+            <select>
+              <option>Select the Frequency</option>
+              <option>Weekly</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Date</label>
+            <input type="date" />
+          </div>
+        </div>
+      </div>
+
+      <div class="step-panel" data-step="2">
+        <div class="form-grid" style="grid-template-columns: 1fr;">
+          <div class="form-field">
+            <label>Type of Tables</label>
+            <div class="toggle-group" data-toggle-group>
+              <button class="active" type="button">Single</button>
+              <button type="button">Multiple</button>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Table Name</label>
+            <input type="text" placeholder="Enter the Table Name" />
+          </div>
+          <div class="form-field">
+            <label>DQ Mode</label>
+            <div class="badge">
+              <input type="radio" checked />
+              Query Space
+            </div>
+            <textarea placeholder="Please enter your Query"></textarea>
+          </div>
+        </div>
+
+        <div class="badge" style="margin-top: 10px;">
+          <input type="radio" checked />
+          Table Configuration
+        </div>
+
+        <table class="inline-table">
+          <thead>
+            <tr>
+              <th>Table Name</th>
+              <th>AttributeName</th>
+              <th>Data Type</th>
+              <th>Aggregate Condition</th>
+              <th>DQ Condition</th>
+              <th>DQ Check Value</th>
+            </tr>
+          </thead>
+          <tbody data-config-body>
+            <tr>
+              <td>DQ_PRODUCT_MASTER</td>
+              <td>GFCID</td>
+              <td>String</td>
+              <td>Count</td>
+              <td>Select Conditions</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>DQ_CUSTOMER_VALIDATION</td>
+              <td>CVYTD Call</td>
+              <td>String</td>
+              <td>Select Conditions</td>
+              <td>Select Conditions</td>
+              <td>Enter DQ Value</td>
+            </tr>
+            <tr>
+              <td>DQ_SALES_AUDIT_LOG</td>
+              <td>PYTTD Calls</td>
+              <td>String</td>
+              <td>Select Conditions</td>
+              <td>Select Conditions</td>
+              <td>Enter DQ Value</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="btn-primary" style="margin-top: 12px;" data-add-row>+ Add Row</button>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-outline" data-modal-close>Cancel</button>
+        <button class="btn-outline" data-role="prev" data-step="1" type="button">Previous</button>
+        <button class="btn-primary" data-role="next" data-step="2" type="button">Next</button>
+        <button class="btn-primary" data-role="submit" data-submit type="button">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay edit-overlay">
+    <div class="modal">
+      <button class="modal-close" data-modal-close aria-label="Close">×</button>
+      <h2>Edit DQ Request</h2>
+      <div class="stepper">
+        <div class="step active" data-step="1">
+          <span class="circle">1</span>
+          <span>Create Request</span>
+        </div>
+        <div class="step" data-step="2">
+          <span class="circle">2</span>
+          <span>Configuration Setup</span>
+        </div>
+      </div>
+
+      <div class="step-panel active" data-step="1">
+        <div class="form-grid">
+          <div class="form-field">
+            <label>CSI ID</label>
+            <input type="text" value="CSI14122" />
+          </div>
+          <div class="form-field">
+            <label>Project Name</label>
+            <input type="text" value="Migration" />
+          </div>
+          <div class="form-field">
+            <label>Checker</label>
+            <input type="text" value="PP48684" />
+          </div>
+          <div class="form-field">
+            <label>SOEID for Mail Trigger</label>
+            <input type="text" value="MR54924" />
+          </div>
+          <div class="form-field">
+            <label>Trigger Frequency</label>
+            <select>
+              <option>Quarterly</option>
+              <option>Monthly</option>
+              <option>Weekly</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Date</label>
+            <input type="text" value="01/06/26" />
+          </div>
+        </div>
+      </div>
+
+      <div class="step-panel" data-step="2">
+        <div class="form-grid" style="grid-template-columns: 1fr;">
+          <div class="form-field">
+            <label>Type of Tables</label>
+            <div class="toggle-group" data-toggle-group>
+              <button class="active" type="button">Single</button>
+              <button type="button">Multiple</button>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Table Name</label>
+            <input type="text" value="SALES_DATA_RELEASE" />
+          </div>
+          <div class="form-field">
+            <label>DQ Mode</label>
+            <div class="badge">
+              <input type="radio" checked />
+              Query Space
+            </div>
+            <textarea>SELECT * FROM table WHERE column_name = 'value';</textarea>
+          </div>
+        </div>
+
+        <table class="inline-table">
+          <thead>
+            <tr>
+              <th>Table Name</th>
+              <th>AttributeName</th>
+              <th>Data Type</th>
+              <th>Aggregate Condition</th>
+              <th>DQ Condition</th>
+              <th>DQ Check Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DQ_PRODUCT_MASTER</td>
+              <td>GFCID</td>
+              <td>String</td>
+              <td>Count</td>
+              <td>Select Conditions</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>DQ_SALES_AUDIT_LOG</td>
+              <td>PYTTD Calls</td>
+              <td>String</td>
+              <td>Select Conditions</td>
+              <td>Select Conditions</td>
+              <td>Enter DQ Value</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-outline" data-modal-close>Cancel</button>
+        <button class="btn-outline" data-role="prev" data-step="1" type="button">Previous</button>
+        <button class="btn-primary" data-role="next" data-step="2" type="button">Next</button>
+        <button class="btn-primary" data-role="submit" data-submit type="button">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay confirm-overlay">
+    <div class="modal small">
+      <button class="modal-close" data-modal-close aria-label="Close">×</button>
+      <h2>Please Confirm!</h2>
+      <p>Are you sure you want to create a Data quality Request?</p>
+      <div class="modal-footer">
+        <button class="btn-outline" data-modal-close>Cancel</button>
+        <button class="btn-primary" data-confirm-proceed>Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay delete-overlay">
+    <div class="modal small">
+      <button class="modal-close" data-modal-close aria-label="Close">×</button>
+      <h2>Please Confirm!</h2>
+      <p>Are you sure you want to delete the DQ Request?</p>
+      <div class="modal-footer">
+        <button class="btn-outline" data-modal-close>Cancel</button>
+        <button class="btn-primary" data-modal-close>Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay success-overlay">
+    <div class="modal small">
+      <button class="modal-close" data-modal-close aria-label="Close">×</button>
+      <h2>Request Submitted!</h2>
+      <div class="modal-success">
+        <span>✅</span>
+        <p>Data Quality Request created successfully.<br />Request ID: DQ-04/235-432</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" data-modal-close>Cancel</button>
+        <button class="btn-primary" data-modal-close>OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay reject-overlay">
+    <div class="modal large">
+      <button class="modal-close" data-modal-close aria-label="Close">×</button>
+      <h2>Reject</h2>
+      <div class="form-grid" style="grid-template-columns: 1fr;">
+        <div class="form-field">
+          <label>Reject reason</label>
+          <select>
+            <option>Lorem ipsum dolor sit amet</option>
+            <option>Incorrect configuration</option>
+            <option>Missing validation rule</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Comments</label>
+          <textarea>Duís autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan.</textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" data-modal-close>Cancel</button>
+        <button class="btn-primary" data-modal-close>Reject</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
