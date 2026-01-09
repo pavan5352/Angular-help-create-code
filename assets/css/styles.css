@@ -519,6 +519,11 @@ a {
   font-size: 13px;
 }
 
+.dq-mode-option input[type="radio"] {
+  margin: 0;
+  transform: translateY(1px);
+}
+
 .dq-mode-label {
   white-space: nowrap;
 }
