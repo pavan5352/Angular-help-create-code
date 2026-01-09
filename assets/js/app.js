@@ -34,6 +34,19 @@ const submitTrigger = document.querySelector("[data-submit]");
 const confirmProceed = document.querySelector("[data-confirm-proceed]");
 
 const toggleButtons = document.querySelectorAll("[data-toggle-group] button");
+const modeScopes = document.querySelectorAll("[data-mode-scope]");
+
+function updateModePanels(scope) {
+  const selected = scope.querySelector("[data-dq-mode]:checked")?.value;
+  const panels = scope.querySelectorAll("[data-mode-panel]");
+  panels.forEach((panel) => {
+    const isActive = panel.dataset.modePanel === selected;
+    panel.classList.toggle("mode-disabled", !isActive);
+    panel.querySelectorAll("input, select, textarea, button").forEach((field) => {
+      field.disabled = !isActive;
+    });
+  });
+}
 
 function openModal() {
   if (overlay) {
@@ -224,7 +237,9 @@ rowToggles.forEach((button) => {
   button.addEventListener("click", () => {
     const target = document.querySelector(`[data-row-panel=\"${button.dataset.rowToggle}\"]`);
     if (!target) return;
-    target.classList.toggle("active");
+    const isExpanded = target.classList.toggle("active");
+    button.textContent = isExpanded ? "▾" : "▸";
+    button.setAttribute("aria-expanded", isExpanded ? "true" : "false");
   });
 });
 
@@ -244,6 +259,13 @@ toggleButtons.forEach((button) => {
     group?.querySelectorAll("button").forEach((btn) => {
       btn.classList.toggle("active", btn === button);
     });
+  });
+});
+
+modeScopes.forEach((scope) => {
+  updateModePanels(scope);
+  scope.querySelectorAll("[data-dq-mode]").forEach((radio) => {
+    radio.addEventListener("change", () => updateModePanels(scope));
   });
 });
 

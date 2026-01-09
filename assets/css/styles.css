@@ -511,6 +511,23 @@ a {
   color: var(--muted);
 }
 
+.dq-mode-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.dq-mode-label {
+  white-space: nowrap;
+}
+
+.mode-panel.mode-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 .details-card {
   background: var(--panel);
   border-radius: 12px;
@@ -665,17 +682,27 @@ a {
 }
 
 .table-scroll {
-  max-height: 420px;
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .modal-success {
   display: flex;
   gap: 10px;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 6px;
   color: #4f596a;
   font-size: 13px;
+}
+
+.modal-success span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
+  line-height: 1;
 }
 
 @media (max-width: 1024px) {

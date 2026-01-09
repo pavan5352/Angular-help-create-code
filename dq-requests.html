@@ -418,7 +418,7 @@
       </div>
 
       <div class="step-panel" data-step="2">
-        <div class="form-grid" style="grid-template-columns: 1fr;">
+        <div class="form-grid" style="grid-template-columns: 1fr;" data-mode-scope>
           <div class="form-field">
             <label>Type of Tables</label>
             <div class="toggle-group" data-toggle-group>
@@ -432,59 +432,60 @@
           </div>
           <div class="form-field">
             <label>DQ Mode</label>
-            <div class="badge">
-              <input type="radio" checked />
-              Query Space
+            <label class="dq-mode-option">
+              <input type="radio" name="dq-mode-create" value="query" checked data-dq-mode />
+              <span class="dq-mode-label">Query Space</span>
+            </label>
+            <div class="mode-panel" data-mode-panel="query">
+              <textarea placeholder="Please enter your Query"></textarea>
             </div>
-            <textarea placeholder="Please enter your Query"></textarea>
+            <label class="dq-mode-option">
+              <input type="radio" name="dq-mode-create" value="table" data-dq-mode />
+              <span class="dq-mode-label">Table Configuration</span>
+            </label>
+            <div class="mode-panel mode-disabled" data-mode-panel="table">
+              <table class="inline-table">
+                <thead>
+                  <tr>
+                    <th>Table Name</th>
+                    <th>AttributeName</th>
+                    <th>Data Type</th>
+                    <th>Aggregate Condition</th>
+                    <th>DQ Condition</th>
+                    <th>DQ Check Value</th>
+                  </tr>
+                </thead>
+                <tbody data-config-body>
+                  <tr>
+                    <td>DQ_PRODUCT_MASTER</td>
+                    <td>GFCID</td>
+                    <td>String</td>
+                    <td>Count</td>
+                    <td>Select Conditions</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>DQ_CUSTOMER_VALIDATION</td>
+                    <td>CVYTD Call</td>
+                    <td>String</td>
+                    <td>Select Conditions</td>
+                    <td>Select Conditions</td>
+                    <td>Enter DQ Value</td>
+                  </tr>
+                  <tr>
+                    <td>DQ_SALES_AUDIT_LOG</td>
+                    <td>PYTTD Calls</td>
+                    <td>String</td>
+                    <td>Select Conditions</td>
+                    <td>Select Conditions</td>
+                    <td>Enter DQ Value</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn-primary" style="margin-top: 12px;" data-add-row>+ Add Row</button>
+            </div>
           </div>
         </div>
-
-        <div class="badge" style="margin-top: 10px;">
-          <input type="radio" checked />
-          Table Configuration
-        </div>
-
-        <table class="inline-table">
-          <thead>
-            <tr>
-              <th>Table Name</th>
-              <th>AttributeName</th>
-              <th>Data Type</th>
-              <th>Aggregate Condition</th>
-              <th>DQ Condition</th>
-              <th>DQ Check Value</th>
-            </tr>
-          </thead>
-          <tbody data-config-body>
-            <tr>
-              <td>DQ_PRODUCT_MASTER</td>
-              <td>GFCID</td>
-              <td>String</td>
-              <td>Count</td>
-              <td>Select Conditions</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>DQ_CUSTOMER_VALIDATION</td>
-              <td>CVYTD Call</td>
-              <td>String</td>
-              <td>Select Conditions</td>
-              <td>Select Conditions</td>
-              <td>Enter DQ Value</td>
-            </tr>
-            <tr>
-              <td>DQ_SALES_AUDIT_LOG</td>
-              <td>PYTTD Calls</td>
-              <td>String</td>
-              <td>Select Conditions</td>
-              <td>Select Conditions</td>
-              <td>Enter DQ Value</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button class="btn-primary" style="margin-top: 12px;" data-add-row>+ Add Row</button>
       </div>
 
       <div class="modal-footer">
@@ -545,7 +546,7 @@
       </div>
 
       <div class="step-panel" data-step="2">
-        <div class="form-grid" style="grid-template-columns: 1fr;">
+        <div class="form-grid" style="grid-template-columns: 1fr;" data-mode-scope>
           <div class="form-field">
             <label>Type of Tables</label>
             <div class="toggle-group" data-toggle-group>
@@ -559,44 +560,51 @@
           </div>
           <div class="form-field">
             <label>DQ Mode</label>
-            <div class="badge">
-              <input type="radio" checked />
-              Query Space
+            <label class="dq-mode-option">
+              <input type="radio" name="dq-mode-edit" value="query" checked data-dq-mode />
+              <span class="dq-mode-label">Query Space</span>
+            </label>
+            <div class="mode-panel" data-mode-panel="query">
+              <textarea>SELECT * FROM table WHERE column_name = 'value';</textarea>
             </div>
-            <textarea>SELECT * FROM table WHERE column_name = 'value';</textarea>
+            <label class="dq-mode-option">
+              <input type="radio" name="dq-mode-edit" value="table" data-dq-mode />
+              <span class="dq-mode-label">Table Configuration</span>
+            </label>
+            <div class="mode-panel mode-disabled" data-mode-panel="table">
+              <table class="inline-table">
+                <thead>
+                  <tr>
+                    <th>Table Name</th>
+                    <th>AttributeName</th>
+                    <th>Data Type</th>
+                    <th>Aggregate Condition</th>
+                    <th>DQ Condition</th>
+                    <th>DQ Check Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>DQ_PRODUCT_MASTER</td>
+                    <td>GFCID</td>
+                    <td>String</td>
+                    <td>Count</td>
+                    <td>Select Conditions</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td>DQ_SALES_AUDIT_LOG</td>
+                    <td>PYTTD Calls</td>
+                    <td>String</td>
+                    <td>Select Conditions</td>
+                    <td>Select Conditions</td>
+                    <td>Enter DQ Value</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-
-        <table class="inline-table">
-          <thead>
-            <tr>
-              <th>Table Name</th>
-              <th>AttributeName</th>
-              <th>Data Type</th>
-              <th>Aggregate Condition</th>
-              <th>DQ Condition</th>
-              <th>DQ Check Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>DQ_PRODUCT_MASTER</td>
-              <td>GFCID</td>
-              <td>String</td>
-              <td>Count</td>
-              <td>Select Conditions</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>DQ_SALES_AUDIT_LOG</td>
-              <td>PYTTD Calls</td>
-              <td>String</td>
-              <td>Select Conditions</td>
-              <td>Select Conditions</td>
-              <td>Enter DQ Value</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="modal-footer">
